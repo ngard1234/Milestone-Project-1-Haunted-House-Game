@@ -1,3 +1,18 @@
+
+
+Background music:
+
+Credit: Spook5 by PeriTune | https://peritune.com/
+Music promoted by https://www.chosic.com/free-music/all/
+Creative Commons CC BY 4.0
+https://creativecommons.org/licenses/by/4.0/*/
+
+Credit:Spooky Ride by Twin Musicom | http://www.twinmusicom.org/
+Music promoted by https://www.chosic.com/free-music/all/
+Creative Commons CC BY 4.0
+https://creativecommons.org/licenses/by/4.0/*/
+
+
 # Milestone-Project-1-Haunted-House-Game
 
 Objective:
