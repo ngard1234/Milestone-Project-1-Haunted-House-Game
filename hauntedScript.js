@@ -1,4 +1,5 @@
-var doorChosen = [];// Array will store both the door that are open.
+var doorChosen = [];// Array will store both doors that are open.
+var imageChosen = [];// Array will store both images that are selected.
 
 window.onload = function() {
   var audio = document.getElementById("my_audio").play();
@@ -86,41 +87,16 @@ var behindDoorImages = [
   },
 ]
 
-
-/*
-function dataId(){
-  for(var i=0; i<behindDoorImages.length; i++){
-    closeDoor.setAttribute('data-id',id);
-    behindDoor.setAttribute('data-id',id);
-}
- console.log()
-}
-
-dataId();*/
-
-//Array for the images behind the doors, 
-//Scramble images by swapping two images at a time.
-function scrambleImagesArray() {
+function scrambleImagesArray() { //Scramble images by swapping two images at a time.
   for(var i= 1; i<behindDoorImages.length; i++) {
     var randomIndex = Math.floor(Math.random() * behindDoorImages.length);
-   // console.log(i);
     var temp = behindDoorImages[i];
-    //console.log(temp);
-    //console.log(behindDoorImages[i]);
     behindDoorImages[i] = behindDoorImages[randomIndex];
-    behindDoorImages[randomIndex] = temp; 
-    //console.log(randomIndex);
-    //console.log(behindDoorImages[randomIndex]);
-    //console.log(behindDoorImages[i]);
-    //console.log(temp);
-    //console.log(behindDoorImages)
-    
+    behindDoorImages[randomIndex] = temp;  
   }
   return behindDoorImages;
 }
-scrambleImagesArray()
-//console.log(behindDoorImages)
-
+scrambleImagesArray();
 
 //Creating the game grid-board layout.
 //Function for reating and positioning elements, to add front door images, for the game grid-board layout.
@@ -132,7 +108,6 @@ function doorClose(leftpos, bottompos){
   document.body.append(doorFront);  
 return 
 } 
-
 
 //Function for creating and positioning elements for behind the doors and adding images.
 function behindDoor(assetsrc, leftpos, bottompos){
@@ -201,33 +176,75 @@ behindDoor(behindDoorImages[16].img,'1000','600');
 doorClose('1200','600');
 behindDoor(behindDoorImages[17].img,'1200','600');
 
-//function closeDoor(){
-  var getDoor = document.querySelectorAll(".door_close");
-  //return getDoor
-//}
+//
+function dataId(){
+  for(let i=0; i<behindDoorImages.length; i++){
+    let door = document.querySelectorAll(".door_close");
+    door[i].setAttribute('data-id',i);
+    let behindDoor = document.querySelectorAll(".back_of_door");
+    behindDoor[i].setAttribute('data-id',i);
+}
+}
 
+dataId();
+
+  var getDoor = document.querySelectorAll(".door_close");
   for(var i=0; i<getDoor.length; i++){
     getDoor[i].addEventListener("click", toggleDoor);
-    //getDoor[i].addEventListener("click", doorCompare);
-    
+    getDoor[i].addEventListener("click", storeImage);
+    getDoor[i].addEventListener("click", storeDoorElement);
+    getDoor[i].addEventListener("click", doorCompare);
   }
-
- 
-  //console.log(doorChosen);
 
   function toggleDoor() {
     this.classList.toggle("door_open");
+    //console.log(this);
   }
 
-  /*function doorCompare() {
+  function storeImage() {
     var doorId=this.getAttribute('data-id');
-    doorChosen.push(behindDoorImages[doorId]);
-    if (behindDoorImages.length === 2){
-      if(behindDoorImages[0] === behindDoorImages[1]){
+    imageChosen.push(behindDoorImages[doorId]);
+    console.log(imageChosen);
+  }
+
+  function storeDoorElement() {
+    //var doorId=this.getAttribute('data-id');
+    doorChosen.push(this);
+    console.log(doorChosen);
+  }
+  
+  
+  function doorCompare() {
+      if(doorChosen[0].dataset.id == doorChosen[1].dataset.id){
         console.log("Both doors are the same");// score to be added to display
-      }else{document.querySelectorAll(".door_close") }
+      }else if (doorChosen[0].dataset.id !== doorChosen[1].dataset.id){
+      console.log("Both doors are not the same");
     }
-  }*/
+
+    setTimeout(()=>{
+      doorChosen[0].classList.toggle("door_open");
+      doorChosen[1].classList.toggle("door_open");}, 2000);
+      
+  }
+  //reset the arrays for chosen door and images.
+  function reset(){
+      console.log(doorChosen);
+      doorChosen.pop();
+      console.log(doorChosen);
+      doorChosen.pop();
+      console.log(doorChosen);
+      console.log('testing');
+      console.log(imageChosen);
+      imageChosen.pop();
+      console.log(imageChosen);
+      imageChosen.pop();
+      console.log(imageChosen);
+      
+  }
+
+  //reset();
+  
+
 
 //you to add many events to the same element, without overwriting existing events:
 //element.addEventListener("click", myFunction);
