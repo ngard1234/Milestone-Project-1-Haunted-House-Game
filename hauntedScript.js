@@ -243,6 +243,9 @@ dataId();
   }
 
   //reset();
+
+  //Creating score board for player one and player two or AI.
+  
   
 
 
