@@ -122,59 +122,62 @@ return
 
 //Execute game grid-board layout and behind the door images.
 //To be simplified later.
-doorClose('200','50');
-behindDoor(behindDoorImages[0].img, '200', '50');
+doorClose('200','225');
+behindDoor(behindDoorImages[0].img, '200', '225');
 
-doorClose('400','50');
-behindDoor(behindDoorImages[1].img,'400', '50');
+doorClose('450','225');
+behindDoor(behindDoorImages[1].img,'450', '225');
 
-doorClose('600','50');
-behindDoor(behindDoorImages[2].img,'600', '50');
+doorClose('700','225');
+behindDoor(behindDoorImages[2].img,'700', '225');
 
-doorClose('800','50');
-behindDoor(behindDoorImages[3].img,'800','50');
+doorClose('950','225');
+behindDoor(behindDoorImages[3].img,'950','225');
 
-doorClose('1000','50');
-behindDoor(behindDoorImages[4].img,'1000','50');
+doorClose('1200','225');
+behindDoor(behindDoorImages[4].img,'1200','225');
 
-doorClose('1200','50');
-behindDoor(behindDoorImages[5].img,'1200','50');
+doorClose('1450','225');
+behindDoor(behindDoorImages[5].img,'1450','225');
 
-doorClose('200','325');
-behindDoor(behindDoorImages[6].img,'200','325');
 
-doorClose('400','325');
-behindDoor(behindDoorImages[7].img,'400','325');
+doorClose('200','525');
+behindDoor(behindDoorImages[6].img,'200','525');
 
-doorClose('600','325');
-behindDoor(behindDoorImages[8].img,'600', '325');
+doorClose('450','525');
+behindDoor(behindDoorImages[7].img,'450','525');
 
-doorClose('800','325');
-behindDoor(behindDoorImages[9].img,'800','325');
+doorClose('700','525');
+behindDoor(behindDoorImages[8].img,'700', '525');
 
-doorClose('1000','325');
-behindDoor(behindDoorImages[10].img,'1000','325');
+doorClose('950','525');
+behindDoor(behindDoorImages[9].img,'950','525');
 
-doorClose('1200','325');
-behindDoor(behindDoorImages[11].img,'1200','325');
+doorClose('1200','525');
+behindDoor(behindDoorImages[10].img,'1200','525');
 
-doorClose('200','600');
-behindDoor(behindDoorImages[12].img,'200','600');
+doorClose('1450','525');
+behindDoor(behindDoorImages[11].img,'1450','525');
 
-doorClose('400','600');
-behindDoor(behindDoorImages[13].img,'400','600');
 
-doorClose('600','600');
-behindDoor(behindDoorImages[14].img,'600','600');
+doorClose('200','825');
+behindDoor(behindDoorImages[12].img,'200','825');
 
-doorClose('800','600');
-behindDoor(behindDoorImages[15].img,'800','600');
+doorClose('450','825');
+behindDoor(behindDoorImages[13].img,'450','825');
 
-doorClose('1000','600');
-behindDoor(behindDoorImages[16].img,'1000','600');
+doorClose('700','825');
+behindDoor(behindDoorImages[14].img,'700','825');
 
-doorClose('1200','600');
-behindDoor(behindDoorImages[17].img,'1200','600');
+doorClose('950','825');
+behindDoor(behindDoorImages[15].img,'950','825');
+
+doorClose('1200','825');
+behindDoor(behindDoorImages[16].img,'1200','825');
+
+doorClose('1450','825');
+behindDoor(behindDoorImages[17].img,'1450','825');
+
 
 //
 function dataId(){
@@ -245,7 +248,7 @@ dataId();
   //reset();
 
   //Creating score board for player one and player two or AI.
-  
+
   
 
 
