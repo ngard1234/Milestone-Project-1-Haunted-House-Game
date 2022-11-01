@@ -1,70 +1,70 @@
 
 /*canvas width and height is set in the script file */ 
 #my_canvas{
-    border: 1px solid black ;
-    /*Credit image: https://www.istockphoto.com/photo/room-gm506671164-84299425?phrase=haunted%20house%20background*/
-    background-image: url("assets/images/creepyroom.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    overflow:hidden; 
-     
+  border: 1px solid black ;
+  /*Credit image: https://www.istockphoto.com/photo/room-gm506671164-84299425?phrase=haunted%20house%20background*/
+  background-image: url("assets/images/creepyroom.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow:hidden; 
+   
 }
 
 
 body{
-    margin: 0;
+  margin: 0;
 }
 
 /*Adding door to game page. */
 .back_of_door
 {
-    
-  background-color: #333;
-  position: absolute;
-  width:100px;
-  height:200px;
-  top:0px;
-  left:0px;
-  margin: 0;
-  margin-top: 50px;
-  margin-left: 100px;
-  z-index: 1;
- 
   
-  
+background-color: #333;
+position: absolute;
+width:100px;
+height:200px;
+top:0px;
+left:0px;
+margin: 0;
+margin-top: 50px;
+margin-left: 100px;
+z-index: 1;
+
+
+
 }
 
 .door_close
 {
-  background-image: url("assets/images/Ranch_Slab_Exterior.jpg");
-  background-size:200px 300px;
-  background-origin: padding-box;
-  background-color: brown;
-  box-shadow: 10px 10px black;
-  position: absolute;
-  top:0px;
-  left:0px;
-  width:100px;
-  height:200px;
-  margin: 0;
-  margin-top:50px;
-  margin-left: 100px;
-  z-index: 2;
-  
-  
-  
-  
- 
-  transform-origin: left;
-  /*Speed of the Door animation*/
-  transition: all 0.5s ease-in-out;
+background-image: url("assets/images/Ranch_Slab_Exterior.jpg");
+background-size:200px 300px;
+background-origin: padding-box;
+background-color: brown;
+box-shadow: 10px 10px black;
+position: absolute;
+top:0px;
+left:0px;
+width:100px;
+height:200px;
+margin: 0;
+margin-top:50px;
+margin-left: 100px;
+z-index: 2;
+
+
+
+
+
+transform-origin: left;
+/*Speed of the Door animation*/
+transition: all 0.75s ease-in-out;
 }
 
 .door_open
 {
-  /*prespective creates the door open effect*/
-  transform: perspective(1200px) translateZ(0px) translateX(0px) translateY(0px) rotateY(-105deg);
+/*prespective creates the door open effect*/
+transform: perspective(1200px) translateZ(0px) translateX(0px) translateY(0px) rotateY(-105deg);
 }
 
 section#game .title{
@@ -94,7 +94,7 @@ section#game .health{
   z-index: 3;
 }
 
-section#game .value{
+section#game #value{
   display: block;
   position: absolute;
   top: 80px;
@@ -114,7 +114,7 @@ section#game .score{
   color: rgb(8, 243, 8);
   z-index: 3;
 }
-section#game .score-value{
+section#game #scorevalue{
   display: block;
   position: absolute;
   top: 150px;
@@ -124,3 +124,4 @@ section#game .score-value{
   color: rgb(8, 243, 8);
   z-index: 3;
 }
+

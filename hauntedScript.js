@@ -1,5 +1,13 @@
-var doorChosen = [];// Array will store both doors that are open.
-var imageChosen = [];// Array will store both images that are selected.
+let doorChosenArr = [];// Array will store both doors that are selected.
+let imageChosenArr = [];// Array will store both images that are selected.
+let notMatchArr=[];
+let behindDoorArr=[]
+const scoreBoardResults= document.querySelector("#scorevalue");
+const healthScoreResult= document.querySelector("#value");
+let scorewinsArr=[];
+let scorelost=0;
+
+//var behindDoorArr=[];// Array will all the back of door elements.
 
 window.onload = function() {
   var audio = document.getElementById("my_audio").play();
@@ -87,8 +95,9 @@ var behindDoorImages = [
   },
 ]
 
-function scrambleImagesArray() { //Scramble images by swapping two images at a time.
-  for(var i= 1; i<behindDoorImages.length; i++) {
+//Scramble images position in the game grid board by swapping two images at a time.
+function scrambleImagesArray() { 
+  for(var i= 0; i<behindDoorImages.length; i++) {
     var randomIndex = Math.floor(Math.random() * behindDoorImages.length);
     var temp = behindDoorImages[i];
     behindDoorImages[i] = behindDoorImages[randomIndex];
@@ -178,85 +187,128 @@ behindDoor(behindDoorImages[16].img,'1200','825');
 doorClose('1450','825');
 behindDoor(behindDoorImages[17].img,'1450','825');
 
-
-//
+//Assign a dataId of number (0-17) to front of door and back of door.
 function dataId(){
   for(let i=0; i<behindDoorImages.length; i++){
     let door = document.querySelectorAll(".door_close");
     door[i].setAttribute('data-id',i);
     let behindDoor = document.querySelectorAll(".back_of_door");
     behindDoor[i].setAttribute('data-id',i);
+    behindDoorArr.push(behindDoor[i]);
 }
 }
 
 dataId();
-
+//Assigning the addListener to the front-of-door, so they can be "click" selected.
+//Use the event "click" to store the selected elements(front-of-door), the images back-of door, and theto compare for matching.
   var getDoor = document.querySelectorAll(".door_close");
   for(var i=0; i<getDoor.length; i++){
     getDoor[i].addEventListener("click", toggleDoor);
     getDoor[i].addEventListener("click", storeImage);
-    getDoor[i].addEventListener("click", storeDoorElement);
-    getDoor[i].addEventListener("click", doorCompare);
+    getDoor[i].addEventListener("click", compareImages);
+    
   }
 
+  //When click event trigger, front of door opens.
   function toggleDoor() {
     this.classList.toggle("door_open");
-    //console.log(this);
   }
 
+//When click event trigger, chosen back-of-door images, married to front-of-door, are stored.
   function storeImage() {
     var doorId=this.getAttribute('data-id');
-    imageChosen.push(behindDoorImages[doorId]);
-    console.log(imageChosen);
-  }
-
-  function storeDoorElement() {
-    //var doorId=this.getAttribute('data-id');
-    doorChosen.push(this);
-    console.log(doorChosen);
-  }
-  
-  
-  function doorCompare() {
-      if(doorChosen[0].dataset.id == doorChosen[1].dataset.id){
-        console.log("Both doors are the same");// score to be added to display
-      }else if (doorChosen[0].dataset.id !== doorChosen[1].dataset.id){
-      console.log("Both doors are not the same");
+    imageChosenArr.push(behindDoorImages[doorId].name);
+    doorChosenArr.push(this); 
+    //console.log(this);
+    console.log(doorChosenArr, "storeImage");
+    console.log(imageChosenArr, "storeImage");
+    
     }
 
-    setTimeout(()=>{
-      doorChosen[0].classList.toggle("door_open");
-      doorChosen[1].classList.toggle("door_open");}, 2000);
+  function compareImages(){
+    if (imageChosenArr.length === 2){
+      
+        if(imageChosenArr[0] === imageChosenArr[1]){
+          console.log(imageChosenArr,"both images are the same.");
+          scorewinsArr.push(imageChosenArr[0])
+          scoreBoardResults.textContent= scorewinsArr.length;
+          doorChosenArr.shift();
+          doorChosenArr.shift();
+          imageChosenArr= [];
+          if(scorewinsArr.length ==9){
+            scoreBoardResults.textContent="🎇Congratulations! You have won!!🎇";        
+          }
+          
+
+          }
+          else if(imageChosenArr[0]!== imageChosenArr[1]){
+           console.log(imageChosenArr,"both images are NOT the same.");
+           notMatchArr.push(imageChosenArr[0]);
+           notMatchArr.push(imageChosenArr[1]); 
+           scorelost++; 
+           //alert("💀Your doors didn't match.You are slowly dying💀")
+           //pumkin="🎃 "
+           notMatchArr.push(imageChosenArr[0]);
+           healthScoreResult.textContent = scorelost;
+           closedoor();
+          }
+          
+        }
+      }
+
+
+    
+      
+      
+    function closedoor(){
+      setTimeout(()=>{
+        console.log(imageChosenArr, "before doors are closes");
+        console.log('door close');
+        doorChosenArr[0].classList.toggle("door_open");
+        doorChosenArr[1].classList.toggle("door_open");
+        console.log(imageChosenArr, "after door close");
+        doorChosenArr.length=0;
+        imageChosenArr.length=0;
+      }, 2000);
+    }
+
+  /*
+  let index1=0;
+  let index2=0;
+  function hidden(){
+    for(var i=0; i<behindDoorImages.length; i++){
+        if(doorChosenArr[0].dataset.id=i){
+          let index1=i;
+        }
+    }
+    behindDoorArr[index1].style.visibility = "hidden";
+    console.log(index1);
+
+    for(var i=0; i<behindDoorImages.length; i++){
+        if(doorChosenArr[1].dataset.id=i){
+            let index2=i;
+        }
+    }
+    behindDoorArr[index2].style.visibility = "hidden";
+    console.log(index2);
+        
+    doorChosenArr[0].style.visibility= "hidden";
+    doorChosenArr[1].style.visibility= "hidden";
       
   }
-  //reset the arrays for chosen door and images.
-  function reset(){
-      console.log(doorChosen);
-      doorChosen.pop();
-      console.log(doorChosen);
-      doorChosen.pop();
-      console.log(doorChosen);
-      console.log('testing');
-      console.log(imageChosen);
-      imageChosen.pop();
-      console.log(imageChosen);
-      imageChosen.pop();
-      console.log(imageChosen);
-      
+  */
+
+  //Reset the arrays for chosen door and images, so player can select another pair of doors.
+function reset(){
+  doorChosenArr = [];
+  imageChosenArr = [];
+  notMatchArr=[];
+  let behindDoorArr=[]
+  let scorewinsArr=[];
+  let scorelost=0;
+  let door = document.querySelectorAll(".door_close");
+  for (i=0; i<behindDoorImages.length; i++){
+    door[i].classList.toggle("door_open");
   }
 
-  //reset();
-
-  //Creating score board for player one and player two or AI.
-
-  
-
-
-//you to add many events to the same element, without overwriting existing events:
-//element.addEventListener("click", myFunction);
-//element.addEventListener("click", mySecondFunction);//let a=event.target.doorChosen.push(getDoor[i]);
-  
-//function hide(evt) {
-// evt.target refers to the clicked <li> element
-// This is different than evt.currentTarget, which would refer to the parent <ul> in this context
-//evt.target.style.visibility = 'hidden';
+} 
