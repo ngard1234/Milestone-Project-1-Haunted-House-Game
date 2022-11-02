@@ -209,13 +209,13 @@ function dataId(){
 
 dataId();
 //Assigning the addListener to the front-of-door, so they can be "click" selected.
-//Use the event "click" to store the selected elements(front-of-door), the images back-of door, and theto compare for matching.
+//Use the event "click" to store the selected elements(front-of-door), the images back-of door, and to compare for matching.
   let getDoor = document.querySelectorAll(".door_close");
   for(let i=0; i<getDoor.length; i++){
     getDoor[i].addEventListener("click", toggleDoor);
     getDoor[i].addEventListener("click", storeImage);
     getDoor[i].addEventListener("click", compareImages);
-   getDoor[i].addEventListener("click", countdown);  
+    //getDoor[i].addEventListener("click", countdown);  
     
   }
 
@@ -276,7 +276,7 @@ dataId();
       }, 2000);
     }
 
-
+/*
 //Timer countdown & function startTimer.
 let numberOfClicks = 0;
 function countdown(){
@@ -312,7 +312,7 @@ function countdown(){
     return sec;
   }
 
-
+*/
 
 //Reset the arrays for chosen door and images, so player can select another pair of doors.   
 function reset(){
