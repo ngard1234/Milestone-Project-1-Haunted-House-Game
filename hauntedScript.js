@@ -276,32 +276,7 @@ dataId();
       }, 2000);
     }
 
-  /*
-  let index1=0;
-  let index2=0;
-  function hidden(){
-    for(var i=0; i<behindDoorImages.length; i++){
-        if(doorChosenArr[0].dataset.id=i){
-          let index1=i;
-        }
-    }
-    behindDoorArr[index1].style.visibility = "hidden";
-    console.log(index1);
 
-    for(var i=0; i<behindDoorImages.length; i++){
-        if(doorChosenArr[1].dataset.id=i){
-            let index2=i;
-        }
-    }
-    behindDoorArr[index2].style.visibility = "hidden";
-    console.log(index2);
-        
-    doorChosenArr[0].style.visibility= "hidden";
-    doorChosenArr[1].style.visibility= "hidden";
-      
-  }
-  */
-/*
 //Timer countdown & function startTimer.
 let numberOfClicks = 0;
 function countdown(){
@@ -320,7 +295,7 @@ function countdown(){
     var s = checkSecond((timeArray[1] - 1));
     if(s==59){m=m-1}
     if(m<0){
-      //alert("You loose!! Try again later.")
+    alert("Time's up, you have lost the game!! Try again later.")
       return
     }
   
@@ -337,7 +312,7 @@ function countdown(){
     return sec;
   }
 
-*/
+
 
 //Reset the arrays for chosen door and images, so player can select another pair of doors.   
 function reset(){
