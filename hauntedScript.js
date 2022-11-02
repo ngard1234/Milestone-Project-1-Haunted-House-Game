@@ -215,7 +215,7 @@ dataId();
     getDoor[i].addEventListener("click", toggleDoor);
     getDoor[i].addEventListener("click", storeImage);
     getDoor[i].addEventListener("click", compareImages);
-   // getDoor[i].addEventListener("click", countdown);  
+   getDoor[i].addEventListener("click", countdown);  
     
   }
 
