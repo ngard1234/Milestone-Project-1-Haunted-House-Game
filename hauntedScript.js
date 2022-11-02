@@ -7,6 +7,15 @@ const healthScoreResult= document.querySelector("#value");
 let scorewinsArr=[];
 let scorelost=0;
 
+let introPage = document.querySelector('.intro');
+introPage.addEventListener('click', ()=>{
+  introPage.style.opacity = 0;
+  setTimeout(()=>{
+    introPage.classList.add('hidden');
+  },610)
+})
+  
+
 //var behindDoorArr=[];// Array will all the back of door elements.
 
 window.onload = function() {
@@ -201,11 +210,12 @@ function dataId(){
 dataId();
 //Assigning the addListener to the front-of-door, so they can be "click" selected.
 //Use the event "click" to store the selected elements(front-of-door), the images back-of door, and theto compare for matching.
-  var getDoor = document.querySelectorAll(".door_close");
-  for(var i=0; i<getDoor.length; i++){
+  let getDoor = document.querySelectorAll(".door_close");
+  for(let i=0; i<getDoor.length; i++){
     getDoor[i].addEventListener("click", toggleDoor);
     getDoor[i].addEventListener("click", storeImage);
     getDoor[i].addEventListener("click", compareImages);
+   // getDoor[i].addEventListener("click", countdown);  
     
   }
 
@@ -230,7 +240,7 @@ dataId();
       
         if(imageChosenArr[0] === imageChosenArr[1]){
           console.log(imageChosenArr,"both images are the same.");
-          scorewinsArr.push(imageChosenArr[0])
+          scorewinsArr.push(imageChosenArr[0]);
           scoreBoardResults.textContent= scorewinsArr.length;
           doorChosenArr.shift();
           doorChosenArr.shift();
@@ -238,8 +248,6 @@ dataId();
           if(scorewinsArr.length ==9){
             scoreBoardResults.textContent="🎇Congratulations! You have won!!🎇";        
           }
-          
-
           }
           else if(imageChosenArr[0]!== imageChosenArr[1]){
            console.log(imageChosenArr,"both images are NOT the same.");
@@ -255,10 +263,6 @@ dataId();
           
         }
       }
-
-
-    
-      
       
     function closedoor(){
       setTimeout(()=>{
@@ -297,18 +301,65 @@ dataId();
       
   }
   */
+/*
+//Timer countdown & function startTimer.
+let numberOfClicks = 0;
+function countdown(){
+  numberOfClicks=+ 1;
+    if (numberOfClicks = 1) {
+      startTimer();
+    }
+}
 
-  //Reset the arrays for chosen door and images, so player can select another pair of doors.
-function reset(){
-  doorChosenArr = [];
-  imageChosenArr = [];
-  notMatchArr=[];
-  let behindDoorArr=[]
-  let scorewinsArr=[];
-  let scorelost=0;
-  let door = document.querySelectorAll(".door_close");
-  for (i=0; i<behindDoorImages.length; i++){
-    door[i].classList.toggle("door_open");
+  document.getElementById('timer').innerHTML = 04 + ":" + 59;
+
+  function startTimer() {
+    var presentTime = document.getElementById('timer').innerHTML;
+    var timeArray = presentTime.split(/[:]+/);
+    var m = timeArray[0];
+    var s = checkSecond((timeArray[1] - 1));
+    if(s==59){m=m-1}
+    if(m<0){
+      //alert("You loose!! Try again later.")
+      return
+    }
+  
+    document.getElementById('timer').innerHTML =
+      m + ":" + s;
+    //console.log(m)
+    setTimeout(startTimer, 2000);
+  
   }
 
-} 
+  function checkSecond(sec) {
+    if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
+    if (sec < 0) {sec = "59"};
+    return sec;
+  }
+
+*/
+
+//Reset the arrays for chosen door and images, so player can select another pair of doors.   
+function reset(){
+  
+  doorChosenArr = [];
+  console.log(doorChosenArr);
+  imageChosenArr = [];
+  console.log(imageChosenArr);
+  notMatchArr=[];
+  console.log(notMatchArr);
+  behindDoorArr=[]
+  console.log(behindDoorArr);
+  scorewinsArr=[];
+  console.log(scorewinsArr);
+  scoreBoardResults.textContent= scorewinsArr.length;
+  scorelost=0;
+  console.log(scorelost);
+  healthScoreResult.textContent = scorelost;
+  
+  scrambleImagesArray();
+  let resetDoor = document.querySelectorAll(".door_open")
+  for (i=0; i<resetDoor.length; i++){
+    resetDoor[i].classList.toggle("door_open");
+  }
+  }

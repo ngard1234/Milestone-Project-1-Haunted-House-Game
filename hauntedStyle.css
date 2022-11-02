@@ -1,4 +1,3 @@
-
 /*canvas width and height is set in the script file */ 
 #my_canvas{
   border: 1px solid black ;
@@ -11,10 +10,12 @@
    
 }
 
-
 body{
   margin: 0;
 }
+
+
+
 
 /*Adding door to game page. */
 .back_of_door
@@ -58,13 +59,25 @@ z-index: 2;
 
 transform-origin: left;
 /*Speed of the Door animation*/
-transition: all 0.75s ease-in-out;
+transition: all 0.3s ease-in-out;
 }
 
 .door_open
 {
 /*prespective creates the door open effect*/
 transform: perspective(1200px) translateZ(0px) translateX(0px) translateY(0px) rotateY(-105deg);
+}
+#time{
+  display: block;
+  position: absolute;
+  font-size:30px;
+  top: 200px;
+  left: 810px;
+  font-weight: bold;
+  color:rgb(8, 243, 8) ;
+  font-family: 'Creepster', cursive;
+  text-shadow: 2px 2px 5px rgb(24, 1, 1);
+  z-index: 4;
 }
 
 section#game .title{
@@ -91,6 +104,7 @@ section#game .health{
   font-weight: bold;
   font-family: 'Creepster', cursive;
   color: rgb(8, 243, 8);
+  text-shadow: 2px 2px 5px rgb(24, 1, 1);
   z-index: 3;
 }
 
@@ -100,28 +114,131 @@ section#game #value{
   top: 80px;
   right: 900px;
   font-size: 30px;
+  font-family: 'Creepster', cursive;
   color: rgb(8, 243, 8);
   z-index: 3;
+  text-shadow: 2px 2px 5px rgb(24, 1, 1);
 }
 section#game .score{
   display: block;
   position: absolute;
-  top: 150px;
+  top: 135px;
   left: 810px;
   font-size: 30px;
   font-weight: bold;
   font-family: 'Creepster', cursive;
   color: rgb(8, 243, 8);
+  text-shadow: 2px 2px 5px rgb(24, 1, 1);
   z-index: 3;
 }
 section#game #scorevalue{
   display: block;
   position: absolute;
-  top: 150px;
+  top: 135px;
   right: 900px;
   font-size: 30px;
   font-weight: bold;
+  font-family: 'Creepster', cursive;
   color: rgb(8, 243, 8);
+  text-shadow: 2px 2px 5px rgb(24, 1, 1);
   z-index: 3;
 }
 
+.intro{
+  background-image: url("assets/images/Haunted-House.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow:hidden; 
+  cursor: pointer;
+  position :fixed;
+  top: 50%;
+  left: 50%;
+  height: 100%;
+  width: 100%;
+  transform : translate(-50%,-50%);
+  background-color: rgb(1, 20, 8);
+  transition : all ease-in-out 600ms;
+  z-index: 5;
+}
+
+
+.hidden{
+  transition : 0.5s;
+  display : none;
+}
+
+.intro-header{
+  height : 90%;
+  color:blueviolet;
+  font-weight: bold;
+  font-family: 'Creepster', cursive;
+  text-shadow: 2px 2px 5px rgb(24, 1, 1);
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.intro-enter{
+  display: block;
+  position: absolute;
+  color:rgb(56, 6, 102);
+  font-weight: bold;
+  font-family: 'Creepster', cursive;
+  text-shadow: 2px 2px 5px rgb(24, 1, 1);
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 950px;
+  left: 850px;
+  border: 5px black solid;
+  color: blueviolet;
+  background-image: url("assets/images/greymetalic-.jpg");
+  border-radius: 15px;
+  z-index: 5;
+}
+
+table{
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-family: "Trirong", serif;
+  top: 700px;
+  left: 710px;
+  font-weight: bold;
+  color: rgb(37, 226, 185);
+  width:25%;
+  background-image: url("assets/images/greymetalic-.jpg");
+  border: 5px groove blueviolet;
+  border-radius: 10px;
+}
+
+tr{
+  
+  height:150px;
+}
+
+.play-again{
+  display: block;
+  position: absolute;
+  color:rgb(56, 6, 102);
+  font-weight: bold;
+  font-family: 'Creepster', cursive;
+  text-shadow: 2px 2px 5px rgb(24, 1, 1);
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 1150px;
+  left: 850px;
+  border: 5px black solid;
+  color: blueviolet;
+  background-image: url("assets/images/greymetalic-.jpg");
+  border-radius: 15px;
+  z-index: 2;
+}
